@@ -7,8 +7,12 @@ function getElement(value) {
 const btnSearch = getElement("btn-search");
 const inputSearch = getElement("input-search");
 
+function getFoodName() {
+  loadData(inputSearch.value);
+}
+
 //
-function loadData(foodName = "all") {
+function loadData(foodName = "chicken") {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`;
   fetch(url)
     .then((res) => res.json())
@@ -18,9 +22,10 @@ loadData();
 
 function display(data) {
   const parentDiv = getElement("parent-div");
+  parentDiv.innerHTML = "";
   data.forEach((element) => {
-    console.log(element.strMeal);
-    console.log(element.strMealThumb);
+    // console.log(element.strMeal);
+    // console.log(element.strMealThumb);
     const div = document.createElement("div");
     div.innerHTML = `  
     <div class="card mycard">
